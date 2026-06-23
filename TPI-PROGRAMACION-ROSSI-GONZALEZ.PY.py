@@ -257,3 +257,55 @@ def mostrar_tabla(paises):
         print(f"{p['nombre']:<25} {p['continente']:<15} {p['poblacion']:>15,} {p['superficie']:>18,}")
     print()
 
+# MENU PRINCIPAL
+def menu_principal():
+    """Punto de entrada del sistema. Carga el CSV y despliega el menú en bucle."""
+    print("=" * 50)
+    print("   SISTEMA DE GESTIÓN DE PAÍSES")
+    print("=" * 50)
+    # Cargamos los datos al inicio; si el archivo no existe se empieza con lista vacía
+    paises = cargar_paises(RUTA_CSV)
+    while True:
+        print("\n╔══════════════════════════════╗")
+        print("║         MENÚ PRINCIPAL       ║")
+        print("╠══════════════════════════════╣")
+        print("║  1. Agregar país             ║")
+        print("║  2. Actualizar país          ║")
+        print("║  3. Buscar país              ║")
+        print("║  4. Filtrar países           ║")
+        print("║  5. Ordenar países           ║")
+        print("║  6. Ver estadísticas         ║")
+        print("║  7. Mostrar todos los países ║")
+        print("║  8. Salir                    ║")
+        print("╚══════════════════════════════╝")
+        opcion = input("\nSeleccioná una opción: ").strip()
+        if opcion == "1":
+            agregar_pais(paises)
+        elif opcion == "2":
+            actualizar_pais(paises)
+        elif opcion == "3":
+            buscar_pais(paises)
+        elif opcion == "4":
+            filtrar_paises(paises)
+        elif opcion == "5":
+            ordenar_paises(paises)
+        elif opcion == "6":
+            mostrar_estadisticas(paises)
+        elif opcion == "7":
+            if paises:
+                print(f"\n─── Todos los países ({len(paises)}) ───\n")
+                mostrar_tabla(paises)
+            else:
+                print("\nNo hay países cargados.")
+        elif opcion == "8":
+            # Al salir guardamos todos los cambios en el CSV
+            guardar_paises(RUTA_CSV, paises)
+            print("\n¡Hasta luego!\n")
+            break  # interrumpe el while True y termina el programa
+        else:
+            print("\nOpción inválida. Ingresá un número del 1 al 8.")
+# PUNTO DE ENTRADA
+# Este bloque garantiza que menu_principal() solo se ejecute
+# cuando el archivo se corre directamente, no si se importa desde otro módulo
+if __name__ == "__main__":
+    menu_principal()
