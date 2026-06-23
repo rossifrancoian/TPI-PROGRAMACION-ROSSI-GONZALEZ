@@ -170,7 +170,7 @@ def _mostrar_filtro(resultados, criterio):
     else:
         print(f"\nNo se encontraron países con {criterio}.")
 
-# 5. ORDENAR PAÍSES
+# 5 - ORDENAR PAÍSES
 def ordenar_paises(paises):
     """Ordena y muestra los países según el criterio y el orden elegidos por el usuario."""
     while True:
@@ -213,3 +213,47 @@ def ordenar_paises(paises):
             ordenados = sorted(paises, key=lambda p: p[clave], reverse=reverse)
             print(f"\nPaíses ordenados por {etiqueta} ({etiqueta_orden}):\n")
             mostrar_tabla(ordenados)
+
+# 6 - ESTADÍSTICAS
+def mostrar_estadisticas(paises):
+    """Calcula y muestra estadísticas generales del dataset."""
+    print("\n─── Estadísticas ───")
+    if not paises:
+        print("\nNo hay países cargados para calcular estadísticas.")
+        return
+    # Extraemos solo los valores numéricos en listas separadas para operar con ellos
+    poblaciones = [p["poblacion"]  for p in paises]
+    superficies = [p["superficie"] for p in paises]
+    # max() y min() con key permiten buscar el diccionario completo según un campo
+    mas_poblado = max(paises, key=lambda p: p["poblacion"])
+    menos_poblado = min(paises, key=lambda p: p["poblacion"])
+    print(f"\nTotal de países: {len(paises)}")
+    print(f"País más poblado: {mas_poblado['nombre']} ({mas_poblado['poblacion']:,} hab.)")
+    print(f"País menos poblado: {menos_poblado['nombre']} ({menos_poblado['poblacion']:,} hab.)")
+    # :,.0f formatea el número con separador de miles y sin decimales
+    print(f"Promedio de población: {statistics.mean(poblaciones):,.0f} hab.")
+    print(f"Promedio de superficie: {statistics.mean(superficies):,.0f} km²")
+    # Construimos un diccionario contando cuántos países hay por cada continente
+    continentes = {}
+    for p in paises:
+        c = p["continente"]
+        if c in continentes:
+            continentes[c] = continentes[c] + 1
+        else:
+            continentes[c] = 1
+    print(f"\nPaíses por continente:")
+    for continente, cantidad in sorted(continentes.items()):
+        print(f"{continente}: {cantidad}")
+
+# FUNCIÓN AUXILIAR: MOSTRAR TABLA
+def mostrar_tabla(paises):
+    """Muestra una lista de países en formato de tabla con columnas alineadas."""
+    # Los números dentro de <> y >  controlan el ancho y la alineación de cada columna
+    encabezado = f"{'NOMBRE':<25} {'CONTINENTE':<15} {'POBLACIÓN':>15} {'SUPERFICIE (km²)':>18}"
+    print(encabezado)
+    print("  " + "─" * 75)
+    for p in paises:
+        # :, agrega separador de miles a los números (ej: 45,376,763)
+        print(f"{p['nombre']:<25} {p['continente']:<15} {p['poblacion']:>15,} {p['superficie']:>18,}")
+    print()
+
