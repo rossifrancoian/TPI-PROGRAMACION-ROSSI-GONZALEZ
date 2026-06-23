@@ -83,7 +83,7 @@ def agregar_pais(paises):
     })
     print(f"\nPaís '{nombre}' agregado correctamente.")
 
-# 2. ACTUALIZAR PAÍS
+# 2 - ACTUALIZAR PAÍS
 def actualizar_pais(paises):
     """Actualiza la población y la superficie de un país existente."""
     print("\n─── Actualizar país ───")
@@ -101,7 +101,7 @@ def actualizar_pais(paises):
             return
     print(f"\nNo se encontró ningún país con el nombre '{nombre}'.")
 
-# 3. BUSCAR PAÍS
+# 3 - BUSCAR PAÍS
 def buscar_pais(paises):
     """Busca países cuyo nombre contenga el texto ingresado (coincidencia parcial o exacta)."""
     print("\n─── Buscar país ───")
@@ -113,3 +113,61 @@ def buscar_pais(paises):
         mostrar_tabla(resultados)
     else:
         print(f"\nNo se encontraron países que coincidan con '{termino}'.")
+
+# 4 - FILTRAR PAÍSES
+
+def filtrar_paises(paises):
+    """Muestra un submenú persistente para filtrar países por distintos criterios."""
+    while True: #Utilizamos un ciclo while True para mostrar un submenu persistente
+        print("\n─── Filtrar países ───")
+        print("1. Por continente")
+        print("2. Por rango de población")
+        print("3. Por rango de superficie")
+        print("4. Volver al menú principal")
+        opcion = input("\nSeleccioná una opción: ").strip()
+        if opcion == "1":
+            _filtrar_por_continente(paises)
+        elif opcion == "2":
+            _filtrar_por_poblacion(paises)
+        elif opcion == "3":
+            _filtrar_por_superficie(paises)
+        elif opcion == "4":
+            break
+        else:
+            print("\nOpción inválida.")
+
+def _filtrar_por_continente(paises):
+    continente = pedir_texto("Continente: ")
+    # Comparamos en minúsculas para no distinguir "america" de "America"
+    resultados = [p for p in paises if p["continente"].lower() == continente.lower()]
+    _mostrar_filtro(resultados, f"continente '{continente}'")
+
+def _filtrar_por_poblacion(paises):
+    print("Ingresá el rango de población:")
+    minimo = pedir_entero("Mínimo: ", minimo=0)
+    maximo = pedir_entero("Máximo: ", minimo=0)
+    if minimo > maximo:
+        print("\nEl mínimo no puede ser mayor que el máximo.")
+        return
+    # Seleccionamos los países cuya población esté dentro del rango indicado
+    resultados = [p for p in paises if minimo <= p["poblacion"] <= maximo]
+    _mostrar_filtro(resultados, f"población entre {minimo:,} y {maximo:,}")
+
+def _filtrar_por_superficie(paises):
+    print("Ingresá el rango de superficie (km²):")
+    minimo = pedir_entero("Mínimo: ", minimo=0)
+    maximo = pedir_entero("Máximo: ", minimo=0)
+    if minimo > maximo:
+        print("\nEl mínimo no puede ser mayor que el máximo.")
+        return
+    resultados = [p for p in paises if minimo <= p["superficie"] <= maximo]
+    _mostrar_filtro(resultados, f"superficie entre {minimo:,} y {maximo:,} km²")
+
+
+def _mostrar_filtro(resultados, criterio):
+    """Muestra los resultados de un filtro o un mensaje si no hay coincidencias."""
+    if resultados:
+        print(f"\n{len(resultados)} país/es encontrado(s) con {criterio}:\n")
+        mostrar_tabla(resultados)
+    else:
+        print(f"\nNo se encontraron países con {criterio}.")
