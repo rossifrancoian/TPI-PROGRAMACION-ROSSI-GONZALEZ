@@ -40,7 +40,6 @@ def guardar_paises(ruta, paises):
     except Exception as e:
         print(f"\n Error al guardar el archivo: {e}")
 
-
 # FUNCIONES DE VALIDACIÓN
 def pedir_entero(mensaje, minimo=1):
     """Solicita un número entero al usuario hasta que ingrese uno válido."""
@@ -55,7 +54,6 @@ def pedir_entero(mensaje, minimo=1):
             # int() lanza ValueError si el valor ingresado por el usuario no es un número
             print("Ingresá un número entero válido.")
 
-
 def pedir_texto(mensaje):
     """Solicita un texto no vacío al usuario."""
     while True:
@@ -63,7 +61,6 @@ def pedir_texto(mensaje):
         if valor:
             return valor
         print("Este campo no puede estar vacío.")
-
 
 # 1 - AGREGAR PAÍS
 def agregar_pais(paises):
@@ -73,13 +70,11 @@ def agregar_pais(paises):
     continente = pedir_texto("Continente        : ")
     poblacion  = pedir_entero("Población         : ")
     superficie = pedir_entero("Superficie (km²)  : ")
-
     # Verificamos que no exista ya un país con el mismo nombre (sin distinguir mayúsculas)
     for p in paises:
         if p["nombre"].lower() == nombre.lower():
             print(f"\nYa existe un país llamado '{nombre}'.")
             return
-
     paises.append({
         "nombre": nombre,
         "poblacion": poblacion,
@@ -87,3 +82,34 @@ def agregar_pais(paises):
         "continente": continente
     })
     print(f"\nPaís '{nombre}' agregado correctamente.")
+
+# 2. ACTUALIZAR PAÍS
+def actualizar_pais(paises):
+    """Actualiza la población y la superficie de un país existente."""
+    print("\n─── Actualizar país ───")
+    nombre = pedir_texto("Nombre del país a actualizar: ")
+    for pais in paises:
+        # Comparamos en minúsculas para no distinguir entre "argentina" y "Argentina"
+        if pais["nombre"].lower() == nombre.lower():
+            print(f"\nPaís encontrado: {pais['nombre']}")
+            print(f"Población actual : {pais['poblacion']:,}")
+            print(f"Superficie actual: {pais['superficie']:,} km²")
+            # Sobreescribimos directamente los valores del diccionario
+            pais["poblacion"]  = pedir_entero("Nueva población: ")
+            pais["superficie"] = pedir_entero("Nueva superficie (km²): ")
+            print(f"\nDatos de '{pais['nombre']}' actualizados correctamente.")
+            return
+    print(f"\nNo se encontró ningún país con el nombre '{nombre}'.")
+
+# 3. BUSCAR PAÍS
+def buscar_pais(paises):
+    """Busca países cuyo nombre contenga el texto ingresado (coincidencia parcial o exacta)."""
+    print("\n─── Buscar país ───")
+    termino = pedir_texto("Ingresá el nombre o parte del nombre: ")
+    # Filtramos usando el operador "in" para permitir búsqueda parcial, sin distinguir mayúsculas
+    resultados = [p for p in paises if termino.lower() in p["nombre"].lower()]
+    if resultados:
+        print(f"\nSe encontraron {len(resultados)} resultado(s):\n")
+        mostrar_tabla(resultados)
+    else:
+        print(f"\nNo se encontraron países que coincidan con '{termino}'.")
