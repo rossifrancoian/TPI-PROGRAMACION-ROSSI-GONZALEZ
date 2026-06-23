@@ -115,7 +115,6 @@ def buscar_pais(paises):
         print(f"\nNo se encontraron países que coincidan con '{termino}'.")
 
 # 4 - FILTRAR PAÍSES
-
 def filtrar_paises(paises):
     """Muestra un submenú persistente para filtrar países por distintos criterios."""
     while True: #Utilizamos un ciclo while True para mostrar un submenu persistente
@@ -163,7 +162,6 @@ def _filtrar_por_superficie(paises):
     resultados = [p for p in paises if minimo <= p["superficie"] <= maximo]
     _mostrar_filtro(resultados, f"superficie entre {minimo:,} y {maximo:,} km²")
 
-
 def _mostrar_filtro(resultados, criterio):
     """Muestra los resultados de un filtro o un mensaje si no hay coincidencias."""
     if resultados:
@@ -171,3 +169,47 @@ def _mostrar_filtro(resultados, criterio):
         mostrar_tabla(resultados)
     else:
         print(f"\nNo se encontraron países con {criterio}.")
+
+# 5. ORDENAR PAÍSES
+def ordenar_paises(paises):
+    """Ordena y muestra los países según el criterio y el orden elegidos por el usuario."""
+    while True:
+        print("\n─── Ordenar países ───")
+        print("Criterio:")
+        print("1. Nombre")
+        print("2. Población")
+        print("3. Superficie")
+        print("4. Volver al menú principal")
+        criterio = input("\nSeleccioná el criterio: ").strip()
+        if criterio == "1":
+            clave, etiqueta = "nombre", "nombre"
+        elif criterio == "2":
+            clave, etiqueta = "poblacion", "población"
+        elif criterio == "3":
+            clave, etiqueta = "superficie", "superficie"
+        elif criterio == "4":
+            break
+        else:
+            print("\nCriterio inválido.")
+            return
+        while True:
+            print("Orden: ")
+            print("1. Ascendente")
+            print("2. Descendente")
+            print("3. Volver a ingresar el criterio de ordenamiento")
+            orden = input("\nSeleccioná el orden: ").strip()
+            if orden == "1":
+                reverse, etiqueta_orden = False, "ascendente"
+            elif orden == "2":
+                reverse, etiqueta_orden = True, "descendente"
+            elif orden == "3":
+                break
+            else:
+                print("\nOrden inválido.")
+                return
+            # sorted() no modifica la lista original, devuelve una nueva lista ordenada
+            # key indica el campo del diccionario a usar como criterio de comparación
+            # reverse=True ordena de mayor a menor, reverse=False de menor a mayor
+            ordenados = sorted(paises, key=lambda p: p[clave], reverse=reverse)
+            print(f"\nPaíses ordenados por {etiqueta} ({etiqueta_orden}):\n")
+            mostrar_tabla(ordenados)
