@@ -225,7 +225,7 @@ def _filtrar_por_poblacion(paises):
     """
     Función:
         Solicita un rango numérico (mínimo y máximo).
-        Define el valor mínimo aceptado = 0
+        Define el valor mínimo aceptado = 0.
         Muestra los países cuya población se encuentre dentro de ese rango, incluyendo los extremos.
     Parámetros:
         Lista de países sobre la que se aplica el filtro.
@@ -246,7 +246,7 @@ def _filtrar_por_superficie(paises):
     """
     Función:
         Solicita un rango numérico (mínimo y máximo).
-        Define el valor mínimo aceptado = 0
+        Define el valor mínimo aceptado = 0.
         Muestra los países cuya superficie se encuentre dentro de ese rango, incluyendo los extremos.
     Parámetros:
         Lista de países sobre la que se aplica el filtro.
@@ -263,7 +263,16 @@ def _filtrar_por_superficie(paises):
     _mostrar_filtro(resultados, f"superficie entre {minimo:,} y {maximo:,} km²")
 
 def _mostrar_filtro(resultados, criterio):
-    """Muestra los resultados de un filtro o un mensaje si no hay coincidencias."""
+    """
+    Función:
+        Muestra en consola los resultados de un filtro especifico aplicado sobre la lista de países.
+        Si no hay coincidencias en el filtrado, muestra un mensaje personalizado.
+    Parámetros:
+        Lista de países que cumplen con el criterio del filtro aplicado (resultados).
+        Descripción del filtro aplicado (criterio), usada en los mensajes personalizados.
+    Retorno:
+        None. Muestra los resultados por consola mediante mostrar_tabla().
+    """
     if resultados:
         print(f"\n{len(resultados)} país/es encontrado(s) con {criterio}:\n")
         mostrar_tabla(resultados)
