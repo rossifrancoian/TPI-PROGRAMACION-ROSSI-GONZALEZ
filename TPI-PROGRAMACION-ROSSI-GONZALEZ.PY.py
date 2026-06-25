@@ -130,7 +130,17 @@ def agregar_pais(paises):
 
 # 2 - ACTUALIZAR PAÍS
 def actualizar_pais(paises):
-    """Actualiza la población y la superficie de un país existente."""
+    """
+    Función:
+        Solicita el nombre del país buscado.
+        Busca dicho país por su nombre en la lista y permite modificar su población y superficie.
+        Muestra al usuario los datos personalizados.
+        Si el país no existe, muestra un mensaje personalizado.
+    Parámetros:
+        Lista de países existentes donde se realizará la busqueda y actualización.
+    Retorno:
+        None. Modifica el diccionario del país encontrado directamente de la lista.
+    """
     print("\n─── Actualizar país ───")
     nombre = pedir_texto("Nombre del país a actualizar: ")
     for pais in paises:
