@@ -179,7 +179,15 @@ def buscar_pais(paises):
 
 # 4 - FILTRAR PAÍSES
 def filtrar_paises(paises):
-    """Muestra un submenú persistente para filtrar países por distintos criterios."""
+    """
+    Función:
+        Muestra un submenú persistente para filtrar países por distintos criterios.
+        Delega la operación a una función correspondiente según el criterio seleccionado.
+    Parámetros:
+        Lista de países sobre la que aplocará el filtro.
+    Retorno:
+        None. Al seleccionar un criterio del menú se le sede el control a dicha función correspondiente.
+    """
     while True: #Utilizamos un ciclo while True para mostrar un submenu persistente
         print("\n─── Filtrar países ───")
         print("1. Por continente")
