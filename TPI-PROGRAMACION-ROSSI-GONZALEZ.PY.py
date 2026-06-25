@@ -6,7 +6,17 @@ RUTA_CSV = "paises.csv"
 
 # FUNCIONES DE ARCHIVO CSV
 def cargar_paises(ruta):
-    """Carga los países desde el archivo CSV y los devuelve como lista de diccionarios."""
+    """
+    Función:
+        Abrir el archivo CSV (paises.csv) y cargar los datos de los países como una lista de diccionarios.
+        En el proceso, convierte los datos de población y superficie de string a int. 
+        En caso de error muestra un mensaje personalizado y devuelve una lista (paises) vacía.
+    Parámetros: 
+        Recibe como parametro la ruta del archivo CSV.
+    Retorno: 
+        Si el archivo no existe o hay errores devuelve una lista vacía.
+        de lo contrario se devuelve una lista de diccionario con los datos de cada país.
+    """
     paises = []
     try:
         with open(ruta, newline="", encoding="utf-8") as archivo:
