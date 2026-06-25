@@ -15,7 +15,7 @@ def cargar_paises(ruta):
         Recibe como parametro la ruta del archivo CSV.
     Retorno: 
         Si el archivo no existe o hay errores devuelve una lista vacía.
-        de lo contrario se devuelve una lista de diccionario con los datos de cada país.
+        Si todo sale bien devuelve una lista de diccionario con los datos de cada país.
     """
     paises = []
     try:
@@ -39,7 +39,17 @@ def cargar_paises(ruta):
 
 
 def guardar_paises(ruta, paises):
-    """Guarda la lista de países en el archivo CSV."""
+    """
+    Función:
+        Sobrescribe el contenido del archivo CSV con la lista de los países.
+        Incluye automaticamente la fila de encabezados como primera línea.
+        En caso de error muestra un mensaje personalizado.
+    Parámetros: 
+        Ruta del arhivo CSV donde se guardarán los datos.
+        Lista de diccionarios con los datos de cada país.
+    Retorno:
+        None
+    """
     try:
         campos = ["nombre", "poblacion", "superficie", "continente"]
         with open(ruta, "w", newline="", encoding="utf-8") as archivo:
