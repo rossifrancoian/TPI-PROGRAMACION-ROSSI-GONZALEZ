@@ -62,7 +62,16 @@ def guardar_paises(ruta, paises):
 
 # FUNCIONES DE VALIDACIÓN
 def pedir_entero(mensaje, minimo=1):
-    """Solicita un número entero al usuario hasta que ingrese uno válido."""
+    """
+    Función:
+        Solicita al usuario que ingrese un número entero por consola.
+        Repite la solicitud hasta recibir un valor válido mayor o igual al mínimo indicado.
+    Parámetros:
+        Texto que se muestra al usuario al pedir el dato.
+        Valor mínimo aceptado (por defecto es 1).
+    Retorno:
+        El número entero (válido) ingresado por el usuario.
+    """
     while True:
         try:
             valor = int(input(mensaje).strip())
@@ -75,7 +84,14 @@ def pedir_entero(mensaje, minimo=1):
             print("Ingresá un número entero válido.")
 
 def pedir_texto(mensaje):
-    """Solicita un texto no vacío al usuario."""
+    """
+    Función:
+
+    Parámetros:
+
+    Retorno:
+        
+    """
     while True:
         valor = input(mensaje).strip()
         if valor:
