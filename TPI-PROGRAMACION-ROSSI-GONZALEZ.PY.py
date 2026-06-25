@@ -158,7 +158,15 @@ def actualizar_pais(paises):
 
 # 3 - BUSCAR PAÍS
 def buscar_pais(paises):
-    """Busca países cuyo nombre contenga el texto ingresado (coincidencia parcial o exacta)."""
+    """
+    Función:
+        Solicita un texto al usuario y busca países cuyo nombre lo contenga (coincidencia parcial o exacta).
+        No distingue estre mayúsculas y minúsculas.
+    Parámetros:
+        Lista de países existentes donde se realizará la busqueda.
+    Retorno:
+        None. Muestra los resultados por consola mediane mostrar_tabla().
+    """
     print("\n─── Buscar país ───")
     termino = pedir_texto("Ingresá el nombre o parte del nombre: ")
     # Filtramos usando el operador "in" para permitir búsqueda parcial, sin distinguir mayúsculas
