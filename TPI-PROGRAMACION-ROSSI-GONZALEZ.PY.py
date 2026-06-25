@@ -48,7 +48,7 @@ def guardar_paises(ruta, paises):
         Ruta del arhivo CSV donde se guardarán los datos.
         Lista de diccionarios con los datos de cada país.
     Retorno:
-        None
+    None. Sobrescribe el archivo directamente.
     """
     try:
         campos = ["nombre", "poblacion", "superficie", "continente"]
@@ -101,7 +101,15 @@ def pedir_texto(mensaje):
 
 # 1 - AGREGAR PAÍS
 def agregar_pais(paises):
-    """Solicita los datos de un nuevo país y lo agrega a la lista."""
+    """
+    Función:
+        Solicita los datos de un nuevo país y lo agrega al final de la lista.
+        Verifica que no exista ya un país con el mismo nombre antes de agregarlo.
+    Parámetros:
+        Lista de países existentes donde se agregará el nuevo registro.
+    Retorno:
+        None. Modifica la lista 'paises' directamente.
+    """
     print("\n─── Agregar país ───")
     nombre     = pedir_texto("Nombre del país   : ")
     continente = pedir_texto("Continente        : ")
