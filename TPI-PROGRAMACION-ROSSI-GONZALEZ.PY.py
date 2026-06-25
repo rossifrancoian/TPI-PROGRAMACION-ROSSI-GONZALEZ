@@ -374,8 +374,16 @@ def mostrar_estadisticas(paises):
 
 # FUNCIÓN AUXILIAR: MOSTRAR TABLA
 def mostrar_tabla(paises):
-    """Muestra una lista de países en formato de tabla con columnas alineadas."""
-    # Los números dentro de <> y >  controlan el ancho y la alineación de cada columna
+    """
+    Función:
+        Muestra una lista de países en formato de tabla.
+        Con columnas alineadas para nombre, continente, población y superficie.
+    Parámetros:
+        Lista de países a mostrar en la tabla.
+    Retorno:
+        None. Imprime la tabla estructurada directamente en consola.
+    """
+    # Los números que le siguen a los :< y :> controlan el ancho y la alineación de cada columna
     encabezado = f"{'NOMBRE':<25} {'CONTINENTE':<15} {'POBLACIÓN':>15} {'SUPERFICIE (km²)':>18}"
     print(encabezado)
     print("  " + "─" * 75)
