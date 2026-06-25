@@ -222,6 +222,16 @@ def _filtrar_por_continente(paises):
     _mostrar_filtro(resultados, f"continente '{continente}'")
 
 def _filtrar_por_poblacion(paises):
+    """
+    Función:
+        Solicita un rango numérico (mínimo y máximo).
+        Define el valor mínimo aceptado = 0
+        Muestra los países cuya superficie se encuentre dentro de ese rango, incluyendo los extremos.
+    Parámetros:
+        Lista de países sobre la que se aplica el filtro.
+    Retorno:
+        None. Muestra los resultados por consola mediante _mostrar_filtro().
+    """
     print("Ingresá el rango de población:")
     minimo = pedir_entero("Mínimo: ", minimo=0)
     maximo = pedir_entero("Máximo: ", minimo=0)
