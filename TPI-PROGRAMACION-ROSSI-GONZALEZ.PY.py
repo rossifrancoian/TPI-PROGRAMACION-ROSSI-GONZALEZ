@@ -281,7 +281,16 @@ def _mostrar_filtro(resultados, criterio):
 
 # 5 - ORDENAR PAÍSES
 def ordenar_paises(paises):
-    """Ordena y muestra los países según el criterio y el orden elegidos por el usuario."""
+    """
+    Función:
+        Solicita al usuario un criterio de ordenamiento mediante un submenú persistente.
+        Solicita al usuario el orden de ordenamiento mediante un sub-submenú persistente.
+        Muestra la lista de países ordenada sin modificar la lista original.
+    Parámetros:
+        Lista de países que se desea ordenar y mostrar.
+    Retorno:
+        None. Muestra la lista ordenada por consola mediante mostrar_tabla().
+    """
     while True:
         print("\n─── Ordenar países ───")
         print("Criterio:")
