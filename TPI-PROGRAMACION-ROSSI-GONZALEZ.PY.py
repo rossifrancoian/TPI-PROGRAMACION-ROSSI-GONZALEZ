@@ -334,7 +334,16 @@ def ordenar_paises(paises):
 
 # 6 - ESTADÍSTICAS
 def mostrar_estadisticas(paises):
-    """Calcula y muestra estadísticas generales del dataset."""
+    """
+    Función:
+        Calcula y muestra por consolta las estadísticas generales del dataset:
+        total de países, país mas y menos poblado, promedio de población,
+        promedio de superficie y cantidad de países por continente.
+    Parámetros:
+        Lista de países sobre la que se calculan las estadísticas.
+    Retorno:
+        None. Muestra los resultados por consola.
+    """
     print("\n─── Estadísticas ───")
     if not paises:
         print("\nNo hay países cargados para calcular estadísticas.")
