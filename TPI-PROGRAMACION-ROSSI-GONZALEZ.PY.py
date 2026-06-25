@@ -86,11 +86,12 @@ def pedir_entero(mensaje, minimo=1):
 def pedir_texto(mensaje):
     """
     Función:
-
+        Solicita al usuario que ingrese una cadena de texto no vacía por consola.
+        Repite la solicitud si el usuario no escribe nada o ingresa solo espacios.
     Parámetros:
-
+        Texto que se muestra al usuario al pedir el dato.
     Retorno:
-        
+        La cadena de texto (válida) ingresada por el usuario.
     """
     while True:
         valor = input(mensaje).strip()
