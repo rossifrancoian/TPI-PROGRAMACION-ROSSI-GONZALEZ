@@ -394,7 +394,18 @@ def mostrar_tabla(paises):
 
 # MENU PRINCIPAL
 def menu_principal():
-    """Punto de entrada del sistema. Carga el CSV y despliega el menú en bucle."""
+    """
+    Función:
+        Punto de entrada del sistema. 
+        Utiliza una función definida para cargar el datased desde el CSV al iniciar.
+        Muestra el menú principal en un bucle persistente.
+        Según la opción selecionada, sede el control a la función correspondiente. 
+        Al salir, guarda los datos actualizados en el CSV.
+    Parámetros:
+        None.
+    Retorno:
+        None.
+    """
     print("=" * 50)
     print("   SISTEMA DE GESTIÓN DE PAÍSES")
     print("=" * 50)
