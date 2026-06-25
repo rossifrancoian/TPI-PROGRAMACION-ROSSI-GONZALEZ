@@ -226,7 +226,7 @@ def _filtrar_por_poblacion(paises):
     Función:
         Solicita un rango numérico (mínimo y máximo).
         Define el valor mínimo aceptado = 0
-        Muestra los países cuya superficie se encuentre dentro de ese rango, incluyendo los extremos.
+        Muestra los países cuya población se encuentre dentro de ese rango, incluyendo los extremos.
     Parámetros:
         Lista de países sobre la que se aplica el filtro.
     Retorno:
@@ -243,6 +243,16 @@ def _filtrar_por_poblacion(paises):
     _mostrar_filtro(resultados, f"población entre {minimo:,} y {maximo:,}")
 
 def _filtrar_por_superficie(paises):
+    """
+    Función:
+        Solicita un rango numérico (mínimo y máximo).
+        Define el valor mínimo aceptado = 0
+        Muestra los países cuya superficie se encuentre dentro de ese rango, incluyendo los extremos.
+    Parámetros:
+        Lista de países sobre la que se aplica el filtro.
+    Retorno:
+        None. Muestra los resultados por consola mediante _mostrar_filtro().
+    """
     print("Ingresá el rango de superficie (km²):")
     minimo = pedir_entero("Mínimo: ", minimo=0)
     maximo = pedir_entero("Máximo: ", minimo=0)
