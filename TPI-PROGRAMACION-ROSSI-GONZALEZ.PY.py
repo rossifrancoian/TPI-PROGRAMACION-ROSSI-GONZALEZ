@@ -161,7 +161,7 @@ def buscar_pais(paises):
     """
     Función:
         Solicita un texto al usuario y busca países cuyo nombre lo contenga (coincidencia parcial o exacta).
-        No distingue estre mayúsculas y minúsculas.
+        La busqueda no distingue estre mayúsculas y minúsculas.
     Parámetros:
         Lista de países existentes donde se realizará la busqueda.
     Retorno:
@@ -184,7 +184,7 @@ def filtrar_paises(paises):
         Muestra un submenú persistente para filtrar países por distintos criterios.
         Delega la operación a una función correspondiente según el criterio seleccionado.
     Parámetros:
-        Lista de países sobre la que aplocará el filtro.
+        Lista de países sobre la que aplicará el filtro.
     Retorno:
         None. Al seleccionar un criterio del menú se le sede el control a dicha función correspondiente.
     """
@@ -207,6 +207,15 @@ def filtrar_paises(paises):
             print("\nOpción inválida.")
 
 def _filtrar_por_continente(paises):
+    """
+    Función:
+        Filtra y muestra los países que pertenecen al continente indicado por el usuario.
+        La comparación no distingue entre mayúsculas y minúsculas.
+    Parámetros:
+        Lista de países sobre la que se aplica el filtro.
+    Retorno:
+        None. Muestra los resultados por consola mediante _mostrar_filtro().
+    """
     continente = pedir_texto("Continente: ")
     # Comparamos en minúsculas para no distinguir "america" de "America"
     resultados = [p for p in paises if p["continente"].lower() == continente.lower()]
