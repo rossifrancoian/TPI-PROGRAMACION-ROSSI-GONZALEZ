@@ -151,5 +151,8 @@ El sistema contempla:
 * Legajo:19296
 * Tareas realizadas: Funciones de archivo CSV (funcion de Cargar y Guardar paises), de actualizar pais, de buscar pais, de ordenar paises, una para el menu principal, ademas de crear el CSV con una base previa cargada. Archivo readme.md. 
 
+### Links Importantes:
+* Link video-demo: https://youtu.be/VdNxVuTuEAM
+
 ## Autoría
 Trabajo práctico académico desarrollado para la gestión y análisis de información de países utilizando Python y archivos CSV.
